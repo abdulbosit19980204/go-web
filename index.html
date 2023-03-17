@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>E-Commerce Website</title>
+    <meta name="description" content="E-Commerce Website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <style>
+        body {
+            padding: 20px;
+        }
+        
+        .product {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">E-commerce Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Customers</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Navigation
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Products</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Orders</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Customers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Dashboard
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Welcome, John Doe!</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquam nisl non malesuada cursus. In hac habitasse platea dictumst. Donec nec ligula ac arcu malesuada semper.</p>
+                    </div>
+                </div>
+
+                <!-- Product lists -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="product">
+                                <h4>Product 1</h4>
+                                <p>Price: $100</p>
+                                <button type="button" class="btn btn-primary add-to-cart" data-product-id="1">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="product">
+                                <h4>Product 2</h4>
+                                <p>Price: $200</p>
+                                <button type="button" class="btn btn-primary add-to-cart" data-product-id="2">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="product">
+                                <h4>Product 3</h4>
+                                <p>Price: $300</p>
+                                <button type="button" class="btn btn-primary add-to-cart" data-product-id="3">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h3>Shopping Cart</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                        </tbody>
+                    </table>
+                    <div id="cart-total">
+                        <h4>Total: $0</h4>
+                    </div>
+                    <button type="button" class="btn btn-primary checkout">Checkout</button>
+                </div>
+
+                <!-- Addind products -->
+                <div class="container mt-5">
+                    <h1 class="mb-3">Add New Product</h1>
+
+                    <form action="/add-product" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="price" name="price" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- Products -->
+    <div class="container mt-5">
+        <h1 class="mb-3">Products</h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">Description of product 1.</p>
+                        <p class="card-text">$99.99</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">Description of product 2.</p>
+                        <p class="card-text">$149.99</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">Description of product 3.</p>
+                        <p class="card-text">$199.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Customers -->
+    <div class="container">
+        <h2>E-commerce Customers</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Order History</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>johndoe@example.com</td>
+                    <td><button type="button" class="btn btn-secondary">View Orders</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Doe</td>
+                    <td>janedoe@example.com</td>
+                    <td><button type="button" class="btn btn-secondary">View Orders</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Bob Smith</td>
+                    <td>bobsmith@example.com</td>
+                    <td><button type="button" class="btn btn-secondary">View Orders</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Orders -->
+    <div class="container my-4">
+        <h1>Orders</h1>
+        <hr>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer Name</th>
+                    <th>Order Date</th>
+                    <th>Order Total</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>John Doe</td>
+                    <td>2022-03-15 14:20:31</td>
+                    <td>$200.00</td>
+                    <td><span class="badge bg-success">Delivered</span></td>
+                    <td><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Jane Doe</td>
+                    <td>2022-03-14 10:30:15</td>
+                    <td>$150.00</td>
+                    <td><span class="badge bg-warning text-dark">Processing</span></td>
+                    <td><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Bob Smith</td>
+                    <td>2022-03-12 16:45:09</td>
+                    <td>$300.00</td>
+                    <td><span class="badge bg-danger">Cancelled</span></td>
+                    <td><a href="#" class="btn btn-sm btn-primary">View</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script
